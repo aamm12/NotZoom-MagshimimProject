@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<html>
+  <body>
+    {%for i in videos %} 
+        <iframe src="{{i}}" width="960" height="540"></iframe><br /><br />
+    {%endfor%} 
+  </body>
+</html>
+{% endblock %}

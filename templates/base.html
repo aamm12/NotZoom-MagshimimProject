@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NotZoom</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+</head>
+
+<body>
+    <section class="hero is-primary is-fullheight">
+
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+
+                    <div id="navbarMenuHeroA" class="navbar-menu">
+                        <div class="navbar-end">
+                            <a href="/home" class="navbar-item">
+                                Home
+                            </a>
+                            {% if 'email' in request.cookies%}
+                                <a href="/chat" class="navbar-item">
+                                    Chat
+                                </a>
+                                <a href="/videos" class="navbar-item">
+                                    Videos
+                                </a>
+                                <a href="/quizzes" class="navbar-item">
+                                    Quizzes
+                                </a>
+                                <a href="/logout" class="navbar-item">
+                                    Logout
+                                </a>
+                            {% else %}
+                                <a href="/login" class="navbar-item">
+                                    Login
+                                </a>
+                                <a href="/signup" class="navbar-item">
+                                    Sign Up
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                {% block content %}
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="notification is-danger">
+                            {{ messages[0] }}
+                        </div>
+                    {% endif %}
+                    {% endwith %}
+                   <form method="POST" action="/create-room">
+                        <button class="button is-block is-info is-large is-fullwidth">Create room</button>
+                    </form>
+                    <br />
+                    <h3 class="title">Or</h3>
+                    <br />
+                    <form method="POST" action="/join-room">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-large" type="text" name="room_id" placeholder="Room id" autofocus="">
+                            </div>
+                        </div>
+                        <button class="button is-block is-info is-large is-fullwidth">Join room</button>
+                    </form>
+                {% endblock %}
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

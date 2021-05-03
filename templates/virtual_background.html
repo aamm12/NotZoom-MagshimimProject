@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<html>
+  <body>
+    <form method="POST" action="/background" enctype="multipart/form-data">
+      <p><input class="button is-block is-info is-large is-fullwidth" type="file" name="file" accept="image/*"></p>
+      <p><input class="button is-block is-info is-large is-fullwidth" type="submit" value="Submit"></p>
+    </form>
+    <a href="/home" class="button is-block is-info is-large is-fullwidth">
+        Back
+    </a>
+  </body>
+</html>
+{% endblock %}

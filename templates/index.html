@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<html>
+  <body>
+    <h1>Video Streaming Demonstration</h1>
+     {% for key, value in frames.items() %} 
+      <img id="bg" src="{{ url_for('video_feed', user_frame=key) }}">
+    {%endfor%}
+    <form method="POST" action="/camera">
+        <button class="button is-block is-info is-large is-fullwidth">Camera</button>
+    </form>
+    <form method="POST" action="/mic">
+        <button class="button is-block is-info is-large is-fullwidth">Audio</button>
+    </form>
+    <form method="POST" action="/screen">
+        <button class="button is-block is-info is-large is-fullwidth">Share screen</button>
+    </form>
+    {% if not record_flag %} 
+      <form method="POST" action="/record">
+        <button class="button is-block is-info is-large is-fullwidth">record room</button>
+    </form>
+    {% else %}
+      <form method="POST" action="/record">
+        <button class="button is-block is-danger is-large is-fullwidth">Stop recording</button>
+    </form>
+    {% endif %}
+    {% if virtual_background %} 
+      <a href="/background" class="button is-block is-info is-large is-fullwidth">
+          Remove virtual background
+      </a>
+    {% else %}
+      <a href="/background" class="button is-block is-info is-large is-fullwidth">
+          Add virtual background
+      </a>
+    {% endif %}
+    <a href="/youtube" class="button is-block is-info is-large is-fullwidth">
+        Add video
+    </a>
+    <a href="/create_quiz" class="button is-block is-info is-large is-fullwidth">
+        Create quiz
+    </a>
+    <form method="POST" action="/leave">
+        <button class="button is-block is-danger is-large is-fullwidth">Leave</button>
+    </form>
+    <h1>Link: 127.0.0.1:5000/?id={{room_id}}</h1>
+  </body>
+</html>
+{% endblock %}

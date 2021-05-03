@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<html>
+  <body>
+     {% for i in videos%} 
+          <a href="set_video?src={{ i['url'] }}">
+              {{ i['name'] }}
+          </a>
+          <br />
+          <a href="set_video?src={{ i['url'] }}"><img src="{{ i['jpg'] }}" id="bg"></a>
+          <br />
+          <br />
+    {%endfor%}
+  </body>
+</html>
+{% endblock %}

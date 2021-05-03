@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<html>
+  <body>
+    <h1>Create quiz</h1>
+     <form method="POST" action="/create_quiz">
+        <div class="field">
+            <div class="control">
+                <input class="input is-large" type="text" name="question" placeholder="Your question" autofocus="">
+            </div>
+            <br />
+            <div class="control">
+                <input class="input is-large" type="text" name="answer1" placeholder="option 1" autofocus="">
+            </div>
+            <br />
+            <div class="control">
+                <input class="input is-large" type="text" name="answer2" placeholder="option 2" autofocus="">
+            </div>
+            <br />
+            <div class="control">
+                <input class="input is-large" type="text" name="answer3" placeholder="option 3" autofocus="">
+            </div>
+            <br />
+            <div class="control">
+                <input class="input is-large" type="text" name="answer4" placeholder="option 4" autofocus="">
+            </div>
+            <br />
+            <div class="control">
+                <input class="input is-large" type="number" name="correct_answer" placeholder="correct_answer" min="1" max="4" autofocus="">
+            </div>
+        </div>
+        <button class="button is-block is-info is-large is-fullwidth">Create Quiz</button>
+    </form>
+  </body>
+</html>
+{% endblock %}

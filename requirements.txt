@@ -1,0 +1,13 @@
+opencv_python==4.4.0.44
+PyAutoGUI==0.9.52
+tf_bodypix==0.3.4
+PyAudio==0.2.11
+Flask==1.1.2
+Pyrebase==3.0.27
+speedtest_cli==2.1.2
+firebase_admin==4.5.0
+numpy==1.19.2
+tensorflow==2.4.1
+numba==0.52.0
+google_api_python_client==2.0.2
+speedtest==0.0.1

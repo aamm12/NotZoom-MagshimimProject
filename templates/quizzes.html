@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<html>
+  <body>
+  	{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="notification is-danger">
+            {{ messages[0] }}
+        </div>
+    {% endif %}
+    {% endwith %} 
+    {%for i in quizzes %}
+        <form method="POST" action="/quizzes">
+		  <label for="question">{{i['question']}}: </label>
+		  <select name="answer">
+		    <option value="1">{{i['answer1']}}</option>
+		    <option value="2">{{i['answer2']}}</option>
+		    <option value="3">{{i['answer3']}}</option>
+		    <option value="4">{{i['answer4']}}</option>
+		  </select>
+		  <br /><br />
+		  <input type="hidden" value="{{i['correct_answer']}}" name="correct_answer" />
+		  <input class="button is-block is-info is-large is-fullwidth" type="submit" value="Submit">
+		</form>
+    {%endfor%} 
+  </body>
+</html>
+{% endblock %}
